@@ -37,6 +37,9 @@ What you will need to install:
 
 ### Lab - StarMap Lab - Pandas with py5
 
+[![Video](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](http://www.youtube.com/watch?v=J2kHSSFA4NU)
+
+
 ## Overview
 
 Create an interactive 3D star map visualization using py5 and pandas. You'll load real star data, plot it on a grid, and create interactive features to explore nearby stars.
