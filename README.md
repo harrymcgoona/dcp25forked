@@ -31,8 +31,6 @@ What you will need to install:
 - Git
 - py5
 
-
-
 ## Week 2 - Python Fundamentals
 
 ### Lab
