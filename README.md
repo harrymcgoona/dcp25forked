@@ -84,11 +84,9 @@ Create a coordinate grid for your star map:
 - Label each gridline with its parsec value
 
 **Coordinate Conversion:**
-- -5 parsecs = 50 pixels (left/bottom edge)
-- 5 parsecs = 750 pixels (right/top edge)
 
 ```python
-py5.remap(parsecs, -5, 5, 50, 750)
+py5.remap(parsecs, -5, 5, border, py5.width - border)
 ```
 
 ## Task 4: Plot the Stars
