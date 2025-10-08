@@ -63,3 +63,40 @@ most_popular = df.sort_values('downloaded', ascending=False)
 
 print_df(most_popular.head())
 
+has_reel = df[df['title'].str.contains('Reel', case=False, na=False)]
+
+df[df['title'].str.contains('Reel', na=False)]
+
+# Startswith
+df[df['name'].str.startswith('The', na=False)]
+
+# Endswith  
+df[df['file'].str.endswith('.csv', na=False)]
+
+# Match (regex)
+df[df['notation'].str.match(r'X:\d+', na=False)]
+
+result = pd.merge(df1, df2, on='column_name')
+
+
+## Joining
+import pandas as pd
+
+# Inner join (default)
+result = pd.merge(df1, df2, on='column_name')
+
+# Left join
+result = pd.merge(df1, df2, on='column_name', how='left')
+
+# Right join
+result = pd.merge(df1, df2, on='column_name', how='right')
+
+# Outer join (full outer)
+result = pd.merge(df1, df2, on='column_name', how='outer')
+
+# Join on multiple columns
+result = pd.merge(df1, df2, on=['col1', 'col2'])
+
+df['column'].unique() → list of unique values
+df.drop_duplicates() → remove duplicate rows
+df['column'].nunique()
