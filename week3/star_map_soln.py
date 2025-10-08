@@ -26,9 +26,11 @@ def print_stars():
         print(row['Yg'])
         print(row['Zg'])
         print(row['Hab?'])
+
+    # also!
+
+    print(df.head())
         
-    """Print star information"""
-    # Your code here
     pass
 
 # 8 0, 10, 0, 20
@@ -67,6 +69,7 @@ def draw_grid():
 def draw_stars():
     global df
     global border
+
     for i, row in df.iterrows():
         xg = row['Xg']
         x = py5.remap(xg, -5, 5, border, py5.width - border)
@@ -89,7 +92,7 @@ def mouse_pressed():
     global clicked1, clicked0, border
 
 
-    inside = -1
+    inside = None
     for i, row in df.iterrows():
         xg = row['Xg']
         x = py5.remap(xg, -5, 5, border, py5.width - border)
@@ -99,21 +102,26 @@ def mouse_pressed():
         d = dist(py5.mouse_x, py5.mouse_y, x, y)
         name = row['Display Name']
         if d < (row['AbsMag']):
-            inside = i
+            inside = row
             break
 
-    if clicked0 == -1 and clicked1 == -1:
-        if inside != -1:
+    if clicked0 is None and clicked1 is None:
+        if inside is not None:
             clicked0 = inside
-
         pass
-    elif clicked0 != -1 and clicked1 == -1:
-        if inside != -1:
+    elif clicked0 is not None and clicked1 is None:
+        if inside is not None:
             clicked1 = inside
         pass
+    elif inside is not None:
+        clicked0 = inside
+        clicked1 = None
+    else:
+        clicked0 = None
+        clicked1 = None
     
-clicked0 = -1
-clicked1 = -1
+clicked0 = None
+clicked1 = None
 
 def setup():
     global border
@@ -131,12 +139,23 @@ def draw():
     draw_grid()
     draw_stars()
 
-    if clicked0 != -1 and clicked1 == -1:
-        xg = df['Xg'][clicked0]
-        yg = df['Yg'][clicked0]
+    if clicked0 is not None and clicked1 is None:
+        xg = clicked0['Xg']
+        yg = clicked0['Yg']
         x = py5.remap(xg, -5, 5, border, py5.width - border)
         y = py5.remap(yg, -5, 5, border, py5.height - border)
         
         py5.line(x, y, py5.mouse_x, py5.mouse_y)
-    
+    elif clicked0 is not None and clicked1 is not None:
+        p0 = (clicked0['Xg'], clicked0['Yg'], clicked0['Zg'])
+        p1 = (clicked1['Xg'], clicked1['Yg'], clicked1['Zg'])
+        
+        dist = math.dist(p0, p1)
+
+        py5.fill(255)
+        py5.text_align(py5.CENTER, py5.CENTER)
+        py5.text(f"The distance between {clicked0['Display Name']} and {clicked1['Display Name']} is {dist} parsecs"
+                 , py5.width / 2
+                 , py5.height - 25)
+
 py5.run_sketch()

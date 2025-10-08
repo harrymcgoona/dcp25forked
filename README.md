@@ -33,6 +33,329 @@ What you will need to install:
 - Pandas
 - Maybe more!
 
+## Week 4 - Explore the Tunepal dataset with Pandas
+
+- [Slides](pandas.pdf)
+
+### Lab 
+
+# Irish Music Albums Lab
+## Exploring Album and Track Data with Pandas
+
+**Duration:** 2 hours  
+**Dataset:** Irish traditional music albums and tracks from thesession.org
+
+---
+
+## Setup
+
+Create a new Python file called `albums_lab.py` and load the two CSV files:
+- `album.csv` - Contains album information
+- `albumtracktune.csv` - Contains tracks and tunes on each album
+
+**Hint:** Look at the class example for how to load CSV files with pandas.
+
+---
+
+## Part 1: Explore the Albums (20 minutes)
+
+### Task 1.1: Load and Inspect Albums
+Load `album.csv` and answer these questions:
+- How many albums are in the dataset?
+- What are the column names?
+- Which artists appear in the first 5 albums?
+- Which artists appear in the last 5 albums?
+
+**Hint:** Use `head()`, `tail()`, `shape`, and `info()`
+
+### Task 1.2: Data Types
+- What data type is each column?
+- Are there any missing values?
+
+**Hint:** Use `info()` and `describe()`
+
+### Task 1.3: Unique Values
+Find out:
+- How many unique artists are in the dataset?
+- Who are the artists?
+
+**Hint:** Look up how to get unique values from a pandas column
+
+---
+
+## Part 2: Explore the Tracks (20 minutes)
+
+### Task 2.1: Load and Inspect Tracks
+Load `albumtracktune.csv` and answer:
+- How many tracks are in the dataset?
+- What columns does this dataset have?
+- What is the relationship between this file and the albums file?
+
+**Hint:** Notice the `album_id` column - what does it refer to?
+
+### Task 2.2: Track Numbers
+- What's the highest track number on any album?
+- How many tunes can a single track contain?
+
+**Hint:** Look at the `track_num` and `tune_num` columns
+
+### Task 2.3: Common Tune Titles
+Which tune titles appear most frequently across all albums?
+
+**Hint:** Use `value_counts()` like in the class example
+
+---
+
+## Part 3: Filtering and Counting (25 minutes)
+
+### Task 3.1: Albums by Artist
+Filter the albums to show only:
+1. Albums by "Altan"
+2. Albums by "Martin Hayes"
+3. Albums by "The Bothy Band"
+
+How many albums does each artist have in the dataset?
+
+**Hint:** Use boolean indexing like `df[df['column'] == 'value']`
+
+### Task 3.2: Tracks on Specific Albums
+1. Find all tracks on album_id 1 (Martin Hayes - The Lonesome Touch)
+2. How many tracks are on this album?
+3. How many total tunes are on this album?
+
+**Hint:** Filter the tracks dataframe by `album_id`
+
+### Task 3.3: Multi-Tune Tracks
+Find all tracks that have more than one tune (tune_num > 1)
+
+How many such tracks are there?
+
+**Hint:** Boolean filtering on the `tune_num` column
+
+---
+
+## Part 4: Grouping and Aggregating (25 minutes)
+
+### Task 4.1: Tracks per Album
+Group the tracks by `album_id` and count how many tracks each album has.
+
+Which album has the most tracks?
+
+**Hint:** Use `groupby()` and `count()` or `size()`
+
+### Task 4.2: Tunes per Album
+For each album, calculate the total number of tunes (not just tracks - remember some tracks have multiple tunes!)
+
+**Hint:** You might need to count all rows for each album_id
+
+### Task 4.3: Average Tunes per Track
+Calculate the average number of tunes per track for each album.
+
+Which albums tend to have more tunes per track?
+
+**Hint:** Use `groupby()` with `mean()` on the `tune_num` column
+
+---
+
+## Part 5: Sorting (15 minutes)
+
+### Task 5.1: Sort Albums
+Sort the albums:
+1. Alphabetically by title
+2. Alphabetically by artist
+3. By ID in descending order
+
+**Hint:** Use `sort_values()` with the `ascending` parameter
+
+### Task 5.2: Sort Tracks
+Sort the tracks dataframe:
+1. By album_id, then by track_num
+2. By title alphabetically
+
+**Hint:** You can pass a list of column names to `sort_values()`
+
+---
+
+## Part 6: Merging the Datasets (30 minutes)
+
+Now it's time to combine the two datasets!
+
+### Task 6.1: Simple Merge
+Merge the albums and tracks dataframes together so you can see the artist and album title alongside each track.
+
+**Hint:** Look up `pd.merge()` - you'll need to specify which columns to join on. The common column between the two dataframes is the album ID (but it has different names in each dataframe!)
+
+### Task 6.2: Explore the Merged Data
+After merging, answer:
+- How many rows does the merged dataframe have?
+- What new information can you see now that the data is merged?
+- Print the first 10 rows
+
+### Task 6.3: Questions with Merged Data
+Now that you have both album info and track info together, answer:
+
+1. How many tracks does Martin Hayes have across all his albums?
+2. What tunes appear on Altan albums?
+3. Which artist has the most individual tune entries in the dataset?
+
+**Hint:** After merging, you can filter by artist name and count
+
+---
+
+## Part 7: Advanced Exploration (25 minutes)
+
+### Task 7.1: Most Prolific Artists
+Create a summary showing:
+- Each artist
+- Number of albums they have
+- Total number of tracks across all their albums
+- Total number of tunes across all their albums
+
+**Hint:** You'll need to use the merged dataframe and `groupby()` with aggregation
+
+### Task 7.2: Find Repeated Tunes
+Some tune titles appear on multiple albums. Find:
+1. Which tune title appears most frequently across different albums?
+2. Which artists have recorded this tune?
+
+**Hint:** Use `value_counts()` on tune titles, then filter to find those albums
+
+### Task 7.3: Album Completeness
+For each album, show:
+- Album title
+- Artist
+- Number of tracks
+- Whether all track numbers are sequential (no gaps)
+
+**Hint:** Think about what "sequential" means - track 1, 2, 3, 4... with no missing numbers
+
+---
+
+## Bonus Challenges (If Time Permits)
+
+### Bonus 1: Custom Print Function
+Write a function that prints album information nicely formatted:
+```
+Album: [title]
+Artist: [artist]
+Tracks: [number]
+Tunes: [number]
+```
+
+### Bonus 2: Track Listings
+Create a function that takes an album_id and prints a complete track listing:
+```
+Album: The Lonesome Touch by Martin Hayes
+
+Track 1:
+  1. Paddy Fahy's
+Track 2:
+  1. The Kerfunten
+Track 3:
+  1. Paul Ha'penny
+  2. The Garden Of Butterflies
+  3. The Broken Pledge
+  ...
+```
+
+### Bonus 3: Artist Comparison
+Compare two artists of your choice:
+- How many albums does each have?
+- Total tracks?
+- Total tunes?
+- Do they share any tune titles?
+
+**Hint:** Filter merged data for each artist, then compare
+
+---
+
+## Tips for Success
+
+- **Refer to the class example** - most tasks are variations of what we did with the tune dataset
+- **Use print statements** - regularly print your dataframes to see what you're working with
+- **Take small steps** - test each piece of code before moving on
+- **Check your assumptions** - use `shape`, `head()`, and `info()` frequently
+- **Ask for help** - if you're stuck, check with classmates or the instructor
+
+---
+
+## Common Pandas Operations You'll Need
+
+Here's a quick reference (without giving away the answers!):
+
+```python
+# Loading
+df = pd.read_csv("filename.csv")
+
+# Exploring
+df.head()
+df.tail()
+df.shape
+df.info()
+df.describe()
+
+# Accessing columns
+df['column_name']
+df[['col1', 'col2']]
+
+# Filtering
+df[df['column'] == value]
+df[df['column'] > value]
+df[(condition1) & (condition2)]
+
+# Counting
+df['column'].value_counts()
+df['column'].nunique()
+
+# Grouping
+df.groupby('column').count()
+df.groupby('column').sum()
+df.groupby('column').mean()
+
+# Sorting
+df.sort_values('column')
+df.sort_values('column', ascending=False)
+df.sort_values(['col1', 'col2'])
+
+# Merging
+pd.merge(df1, df2, left_on='col1', right_on='col2')
+```
+
+---
+
+## Reflection Questions
+
+At the end of the lab, consider:
+
+1. What did you learn about Irish traditional music from this data?
+2. What patterns did you notice in how albums are structured?
+3. What was the most challenging part of working with these datasets?
+4. How did merging the datasets help answer questions you couldn't answer before?
+5. What other questions would you like to explore with this data?
+
+---
+
+## Extension Ideas
+
+If you finish early or want to explore further:
+
+- Find albums that share the most tune titles
+- Calculate average album length (in tracks) by artist
+- Identify "set tunes" - tunes that always appear together on tracks
+- Create visualizations of the data
+- Export your findings to a new CSV file
+
+---
+
+## What to Submit
+
+Save your Python file with:
+- All your code for the tasks
+- Comments explaining what each section does
+- At least one interesting finding you discovered
+
+**Good luck and have fun exploring the data!** 🎵
+
 ## Week 3 - Pandas
 
 ### Lab - StarMap Lab - Pandas with py5
