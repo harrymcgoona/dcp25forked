@@ -2,13 +2,42 @@ import pandas as pd
 
 df = pd.read_csv("data/tuneindex.csv")
 
-pd.set_option("display.max_rows", 100)
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_columns", None)
 
 print(df.head()) # print the first 5
 print(df.tail()) # print last 5
 print(df.shape) # rows and cols
 
 print(df.columns)
+
+
+df1 = pd.read_csv("data/album.csv")
+
+altan = df1[df1['artist'] == 'Altan']
+
+print(altan.shape[0])
+
+uni = df1[df1['artist'].notnull()]
+
+uni = df1['artist'].unique()
+
+print(len(uni))
+
+print(uni)
+
+for i in range(len(uni)):
+    print(uni[i])
+
+df2 = pd.read_csv("data/albumtracktune.csv")
+
+lonesome = df2[df2['album_id'] == 1]
+
+for i in range(len(lonesome)):
+    print(f"{lonesome['title'][i]}  {lonesome['track_num'][i]} {lonesome['tune_num'][i]}")
+
+print(lonesome['title'][len(lonesome) - 1])
+
 
 for c in df.columns:
     print(c)
@@ -54,8 +83,8 @@ maids = df[df['title'].str.contains("maid", case= False)]
 print("maid tunes")
 print(maids.shape[0])
 
-for i, row in maids.iterrows():
-    print(row['title'])
+# for i, row in maids.iterrows():
+#    print(row['title'])
 
 
 print("e minor tunes")
@@ -72,12 +101,14 @@ sorted = df.sort_values('downloaded', ascending=False)
 #for i, row in sorted.iterrows():
 #    print(f"{i} {row['title']} {row['downloaded']}")
     
-print(sorted.head())
+# print(sorted.head())
 
 tunes_by_type = df.groupby("tune_type")
 
 
-print(tunes_by_type.head())
+# print(tunes_by_type.head())
 
-print_df(sorted, 10)
+# print_df(sorted, 10)
+
+
 
