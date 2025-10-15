@@ -1,7 +1,6 @@
 import random
 import pyttsx3
-
-engine = pyttsx3.init()
+import pandas as pd
 
 chrs = ["Doctor", "Priest", "Teacher", "Bus Driver", "Student", "Fair Maid", "Soldier", "Sailor", "Captain", "sad old woman", "angry farmer"]
 verbs = ["threw", "cooked", "cooked for", "composed with", "programmed", "tickeled", "jumped on", "danced with", "played a tune with", "kicked", "programmed"]
@@ -47,10 +46,27 @@ tunes = [{"title" : "The TU Dublin Polka", "downloads": 300},
          {"title" : "The Dublin Reel", "downloads": 300},
          {"title" : "The TU Dublin Polka", "downloads": 300}]
 
+tunes_df = pd.DataFrame(tunes)
+
+print(tunes_df.head())
+
 # read a file into a list of strings
 with open("data/oneills.abc", 'r', encoding='latin-1') as f:
     lines = f.readlines()
 
-for line in lines:
-    # print(line)
+oneills = []
+current_tune = {}
+for line in lines:    
+    if line.startswith("X:"):
+        # we are in a new tune
+        x = int(line[2:]) # retrieve the index number
+        current_tune = {"x": x} 
+        oneills.append(current_tune)
+    elif line.startswith("T:"):
+        title = line[2:].strip()
+        current_tune["title"] = title
+        oneills[len(oneills) - 1] = current_tune
     pass
+
+for tune in oneills:
+    print(tune)
