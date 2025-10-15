@@ -1,0 +1,54 @@
+import random
+import pyttsx3
+
+engine = pyttsx3.init()
+
+chrs = ["Doctor", "Priest", "Teacher", "Bus Driver", "Student", "Fair Maid", "Soldier", "Sailor", "Captain", "sad old woman", "angry farmer"]
+verbs = ["threw", "cooked", "cooked for", "composed with", "programmed", "tickeled", "jumped on", "danced with", "played a tune with", "kicked", "programmed"]
+objects = ["cat", "table", "joystick", "xbox", "laptop", "window", "house", "flute", "tank", "projector", "spoon", "fork handle", "candle", "dogs paw", "eyeball"]
+days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+print("Once upon a time")
+for i in range(len(days) - 1, -1, -1):
+    r_chr = random.randrange(0, len(chrs))
+    r_chr1 = random.randrange(0, len(chrs))
+    r_vrb = random.randrange(0, len(verbs))
+    r_obj = random.randrange(0, len(verbs))
+    r_vrb = random.randrange(0, len(verbs))
+    message = f"The {chrs[r_chr]} {verbs[r_vrb]} the {chrs[r_chr1]} with the {objects[r_obj]} on {days[i]}"
+    print(message)
+    #engine.say(message)
+    # engine.runAndWait()
+
+print("The end")
+
+sli = chrs[2:]
+sli = chrs[2:3]
+
+message:str = "<html><body>Hello<b>     world              </b></body><html>"
+
+ib = message.index("<b>")
+ibb = message.index("</b>")
+between = message[ib + 3:ibb]
+cleaned = between.strip()
+trad = message[7: 19]
+print(trad)
+print(sli)
+
+tune = {"title" : "The TU Dublin Polka", "downloads": 300}
+tune["downloads"]
+
+for key in tune.keys():
+    print(key + " " + str(tune[key]))
+
+tunes = [{"title" : "The TU Dublin Polka", "downloads": 300},
+         {"title" : "The Dublin Reel", "downloads": 300},
+         {"title" : "The TU Dublin Polka", "downloads": 300}]
+
+
+
+with open("data/oneills.abc", 'r', encoding='latin-1') as f:
+    lines = f.readlines()
+
+for line in lines:
+    print(line)
