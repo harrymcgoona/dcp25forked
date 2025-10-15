@@ -9,12 +9,11 @@ objects = ["cat", "table", "joystick", "xbox", "laptop", "window", "house", "flu
 days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
 print("Once upon a time")
-for i in range(len(days) - 1, -1, -1):
+for i in range(len(days)):
     r_chr = random.randrange(0, len(chrs))
     r_chr1 = random.randrange(0, len(chrs))
     r_vrb = random.randrange(0, len(verbs))
-    r_obj = random.randrange(0, len(verbs))
-    r_vrb = random.randrange(0, len(verbs))
+    r_obj = random.randrange(0, len(objects))
     message = f"The {chrs[r_chr]} {verbs[r_vrb]} the {chrs[r_chr1]} with the {objects[r_obj]} on {days[i]}"
     print(message)
     #engine.say(message)
@@ -35,20 +34,23 @@ trad = message[7: 19]
 print(trad)
 print(sli)
 
+# a dictionary
 tune = {"title" : "The TU Dublin Polka", "downloads": 300}
 tune["downloads"]
 
 for key in tune.keys():
     print(key + " " + str(tune[key]))
 
+
+# a list of dictionaries!
 tunes = [{"title" : "The TU Dublin Polka", "downloads": 300},
          {"title" : "The Dublin Reel", "downloads": 300},
          {"title" : "The TU Dublin Polka", "downloads": 300}]
 
-
-
+# read a file into a list of strings
 with open("data/oneills.abc", 'r', encoding='latin-1') as f:
     lines = f.readlines()
 
 for line in lines:
-    print(line)
+    # print(line)
+    pass
