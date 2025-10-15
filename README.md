@@ -33,6 +33,359 @@ What you will need to install:
 - Pandas
 - Maybe more!
 
+## Week 5 - Lists, Dictionaries, Strings, Slicing
+- [Slides](week4/python_fundamentals.pdf)
+
+### Lab
+
+# ABC Music File Parser Lab
+## Parsing Irish Traditional Music in ABC Notation
+
+**Dataset:** ABC notation file with 200+ Irish traditional tunes
+
+---
+
+## Overview
+
+You'll parse an ABC music notation file, extract tune information, and analyze it with pandas. ABC notation is a text-based music format where each tune has metadata (title, key, type) and the musical notation.
+
+---
+
+## Part 1: Understanding the File Format
+
+### Task 1.1: Examine the File Structure
+
+Open the ABC file and look at a few tunes. Each tune follows this pattern:
+
+```
+X:21001 
+T:FUNNY TAILOR, The
+R:jig 
+M:6/8
+L:1/8
+K:G
+BA|GED GAB|GBA G2G|...
+
+%%%
+
+X:21002 
+T:BUNKER HILL (reel)
+R:reel
+K:G
+...
+```
+
+**Key observations:**
+- Every tune starts with `X:` followed by a number
+- `T:` lines contain the title (can have multiple T: lines - first is main title, second is alternate)
+- `R:` is the tune type (reel, jig, hornpipe, slip jig, etc.)
+- `K:` is the musical key (G, D, Em, Dmaj, etc.)
+- Tunes end with blank lines (often marked with `%%%`)
+- Everything from X: to the blank lines is the "notation"
+
+**Questions to answer:**
+1. How can you identify when a new tune starts?
+2. How can you identify when a tune ends?
+3. What information do we need to extract?
+
+---
+
+## Part 2: Read File into a List
+
+### Task 2.1: Load the File
+
+Write code to read the ABC file line by line into a list.
+
+**Hints:**
+- Use `open()` with the file path
+- Read all lines at once or iterate line by line
+- Each line will be a string
+
+
+### Task 2.2: Inspect the Data
+
+After loading:
+- Print the total number of lines
+- Print the first 20 lines to see the structure
+- Print the last 10 lines
+
+**Questions:**
+- How many lines are in the file?
+- Can you spot where tunes begin and end?
+
+---
+
+## Part 3: Parse Tunes into Dictionaries
+
+This is the main challenge! You need to:
+1. Identify tune boundaries (starts with X:, ends with blank lines)
+2. Extract metadata from each tune
+3. Store each tune as a dictionary
+
+### Task 3.1: Find Tune Boundaries
+
+Write code to identify where each tune starts and ends.
+
+**Approach:**
+- Loop through all lines
+- When you see a line starting with "X:", that's a new tune
+- Collect lines until you hit blank lines
+- A blank line is when `line.strip() == ""`
+
+**Hint for structure:**
+```python
+tunes = []
+current_tune_lines = []
+in_tune = False
+
+for line in lines:
+    # Check if this starts a new tune
+    if line.startswith("X:"):
+        # If we were already collecting a tune, save it first
+        if current_tune_lines:
+            # Process the previous tune
+            pass
+        # Start collecting new tune
+        current_tune_lines = [line]
+        in_tune = True
+    elif in_tune:
+        # Keep collecting lines for current tune
+        # Check if blank line (end of tune)
+        pass
+```
+
+### Task 3.2: Extract Tune Metadata
+
+For each tune, extract:
+- **X:** The tune ID (just the number part)
+- **T:** Title (first T: line you encounter)
+- **Alt Title:** Second T: line (if it exists)
+- **R:** Tune type (the text after R:)
+- **K:** Key (the text after K:)
+- **Notation:** All lines from X: to end (as a single string)
+
+**Parsing hints:**
+```python
+def parse_tune(tune_lines):
+    """Parse a list of lines into a tune dictionary"""
+    tune = {
+        'X': None,
+        'title': None,
+        'alt_title': None,
+        'tune_type': None,
+        'key': None,
+        'notation': '\n'.join(tune_lines)
+    }
+    
+    # Put your code here!
+    
+    return tune
+```
+### Task 3.3: Build the Complete Tune List
+
+Combine Tasks 3.1 and 3.2 to create a list of tune dictionaries.
+
+**Test your code:**
+```python
+print(f"Found {len(tunes)} tunes")
+print("\nFirst tune:")
+print(tunes[0])
+print("\nLast tune:")
+print(tunes[-1])
+```
+
+**Expected output structure:**
+```python
+{
+    'X': '21001',
+    'title': 'FUNNY TAILOR, The',
+    'alt_title': None,
+    'tune_type': 'jig',
+    'key': 'G',
+    'notation': 'X:21001\nT:FUNNY TAILOR...'
+}
+```
+
+---
+
+## Part 4: Load into Pandas DataFrame
+
+### Task 4.1: Create DataFrame
+
+Convert your list of dictionaries into a pandas DataFrame.
+
+```python
+import pandas as pd
+
+# Your code here
+```
+
+### Task 4.2: Inspect the DataFrame
+
+```python
+# Print basic info
+print(df.shape)
+print(df.head())
+print(df.info())
+
+# Check for missing values
+print(df.isnull().sum())
+
+# What columns do we have?
+print(df.columns)
+```
+
+**Questions:**
+- How many tunes were successfully parsed?
+- How many have alternate titles?
+- What data type is each column?
+
+---
+
+## Part 5: Data Analysis Queries
+
+Now the fun part - analyze the tunes!
+
+### Task 5.1: Group by Tune Type
+
+Count how many tunes of each type (reel, jig, hornpipe, etc.)
+
+```python
+# Your code here - use value_counts() or groupby()
+```
+
+**Questions:**
+- Which tune type is most common?
+- Which tune type is least common?
+- How many different tune types are there?
+
+### Task 5.2: Group by Key
+
+Count how many tunes in each musical key.
+
+```python
+# Your code here
+```
+
+**Questions:**
+- Which key is most popular?
+- Are there more tunes in major or minor keys?
+- Any unusual keys?
+
+### Task 5.3: Find Alcoholic Drinks in Titles
+
+Search for tunes that mention alcoholic drinks in their titles.
+
+**Common alcoholic drinks to search for:**
+- whiskey/whisky
+- beer/ale
+- wine
+- brandy
+- punch
+- porter
+- rum
+- gin
+
+**Hints:**
+- Use `.str.contains()` with `case=False` and `na=False`
+- Can search for multiple terms using `|` (OR operator)
+- Example: `df['title'].str.contains('whiskey|brandy', case=False, na=False)`
+
+```python
+# Your code here
+```
+
+**Questions:**
+- How many tunes mention alcoholic drinks?
+- Which drink appears most often?
+- Print the titles of these tunes
+
+### Task 6.4: Export Results
+
+Save your DataFrame to a CSV file:
+
+```python
+df.to_csv('parsed_tunes.csv', index=False)
+```
+
+---
+
+## Tips for Success
+
+### Common Issues
+
+
+## Starter Code Template
+
+```python
+import pandas as pd
+
+# Part 2: Read file
+def load_abc_file(filename):
+    """Load ABC file into list of lines"""
+    with open(filename, 'r', encoding='latin-1') as f:
+        lines = f.readlines()
+    return lines
+
+# Part 3: Parse tunes
+def parse_tune(tune_lines):
+    """Parse a single tune from lines"""
+    tune = {
+        'X': None,
+        'title': None,
+        'alt_title': None,
+        'tune_type': None,
+        'key': None,
+        'notation': '\n'.join(tune_lines)
+    }
+    
+    title_count = 0
+    
+    for line in tune_lines:
+        line = line.strip()
+        
+        
+    
+    return tune
+
+def parse_all_tunes(lines):
+    """Parse all tunes from lines"""
+    tunes = []
+    current_tune_lines = []
+    blank_count = 0
+    
+    for line in lines:
+        # TODO: Implement tune boundary detection
+        # TODO: Call parse_tune() for each complete tune
+        pass
+    
+    
+    return tunes
+
+    # Load file
+    lines = load_abc_file('dmi_tunes.abc')
+    print(f"Loaded {len(lines)} lines")
+    
+    # Parse tunes
+    tunes = parse_all_tunes(lines)
+    print(f"Parsed {len(tunes)} tunes")
+    
+    # Create DataFrame
+    df = pd.DataFrame(tunes)
+    
+    # Analysis
+    print("\n=== TUNE TYPE COUNTS ===")
+    # TODO: Your code here
+    
+    print("\n=== KEY COUNTS ===")
+    # TODO: Your code here
+    
+    print("\n=== ALCOHOLIC DRINKS IN TITLES ===")
+    # TODO: Your code here
+```
+
+---
+
 ## Week 4 - Explore the Tunepal dataset with Pandas
 
 - [Slides](pandas.pdf)
