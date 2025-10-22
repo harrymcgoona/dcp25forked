@@ -5,11 +5,20 @@ import py5
 df = 0
 border = 0
 
+x_list = []
+y_list = []
+
 def load_data():
     global df
     df = pd.read_csv("data/HabHYG15ly.csv", encoding="latin1")
     count = df.shape[1]
     print(f"Num stars: {count}")
+
+
+
+    x_list = [py5.remap(xG, -5, 5, border, py5.width - border) for xG in df["Xg"]]
+    y_list = [py5.remap(yG, -5, 5, border, py5.width - border) for yG in df["Yg"]]
+
     pass
 
 def print_stars():

@@ -55,18 +55,43 @@ with open("data/oneills.abc", 'r', encoding='latin-1') as f:
     lines = f.readlines()
 
 oneills = []
-current_tune = {}
+current_tune = None
+
 for line in lines:    
     if line.startswith("X:"):
         # we are in a new tune
         x = int(line[2:]) # retrieve the index number
-        current_tune = {"x": x} 
-        oneills.append(current_tune)
+        current_tune = {"x": x}         
     elif line.startswith("T:"):
         title = line[2:].strip()
         current_tune["title"] = title
-        oneills[len(oneills) - 1] = current_tune
+    elif line.strip() == "" and current_tune:
+        oneills.append(current_tune)
+        current_tune = None
     pass
 
 for tune in oneills:
     print(tune)
+
+all_tunes = pd.DataFrame(oneills)
+
+print(all_tunes.head())
+
+amy = {"name" : "Amy", "gamer_tag" : "rose_killer", "high_score": 306, "money": 1000.0}
+
+amy["inventry"] = {"gun", "mallet", "wand", "cat"}
+
+print("Amy: " + str(amy))
+print("Inv: " + str(amy["inventry"]))
+
+amy["inventry"].add("mallet")
+
+has_mallet = "mallet" in amy["inventry"]
+print(has_mallet)
+
+for key in amy.keys():
+    print(key + " " + str(amy[key]))
+
+for vals in amy.values():
+    print(vals)
+
