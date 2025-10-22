@@ -7,9 +7,8 @@ Welcome to the Metaverse
 ![](holo.jpg)
 
 ## Assessment
-- 15% Weekly submissions
-- 15% Lab Test
-- 20% Assignment
+- 20% Weekly submissions
+- 30% Assignment
 - 50% Exam
 
 # Resources
