@@ -1,8 +1,6 @@
-# ABC Music Database & GUI Assignment
-## Building a Traditional Irish Music Database Explorer
-
-**Due Date:**   
-**Weight:** 35%
+# ABC Music Dashboard
+  
+**Weight:** 30%
 **Submission:** GitHub repository URL + In-class demo
 
 ---
@@ -13,7 +11,7 @@ You will build a complete database application that:
 1. Reads ABC music files from multiple folders (representing different books)
 2. Parses and stores tunes in a MySQL database
 3. Loads data into pandas for analysis
-4. Provides a tkinter GUI for browsing and searching the tune collection
+4. Create a dashboard so that a user can browse the data
 5. Maintains proper version control with Git/GitHub
 
 ---
@@ -48,7 +46,7 @@ abc_books/
 
 ## Part 1: Database Design & File Parsing (30%)
 
-### Task 1.1: Design Database Schema
+### Design Database Schema
 
 Create a MySQL database called `abc_music` with a table called `tunes`.
 
@@ -62,7 +60,7 @@ Create a MySQL database called `abc_music` with a table called `tunes`.
 - `key_signature` - VARCHAR(20) (G, D, Em, Ador, etc.)
 - `notation` - TEXT (the complete ABC notation)
 
-### Task 1.2: File Discovery
+### File Discovery
 
 Write code to discover all ABC files in the folder structure.
 
@@ -72,18 +70,17 @@ Write code to discover all ABC files in the folder structure.
 - Determine the book number from the parent folder name
 - Handle cases where folders might be named "0", "1", "2", etc.
 
-### Task 1.3: Parse and Insert Tunes
+### Parse and Insert Tunes
 
 For each ABC file:
 1. Parse all tunes in the file (using logic from previous lab)
 2. Insert each tune into the database with the correct book number
-3. Handle duplicate tunes gracefully
 
 ---
 
-## Part 2: Data Loading with Pandas (15%)
+## Part 2: Data Loading with Pandas (20%)
 
-### Task 2.1: Load Data from MySQL
+### Load Data from MySQL
 
 Create a function that loads the entire tunes table into a pandas DataFrame.
 
@@ -102,7 +99,7 @@ def load_tunes_from_database():
     return df
 ```
 
-### Task 2.2: Create Analysis Functions
+### Create Analysis Functions
 
 Write functions to analyze the data:
 
@@ -132,13 +129,12 @@ def get_statistics(df):
 
 ---
 
-## Part 3: Tkinter GUI (40%)
+## Part 3: Dashboard & Interactive Elements (40%)
 
-### Task 3.1: Main Window Design
+Create a "dashboard". It can be purely text based or use TKInter, Django, or Py5
 
-Create a tkinter application with the following components:
+**Suggested Layout:**
 
-**Layout:**
 ```
 +------------------------------------------+
 |  ABC Music Explorer                    X |
@@ -163,38 +159,7 @@ Create a tkinter application with the following components:
 +------------------------------------------+
 ```
 
-### Task 3.2: Required Features
-
-**1. Data Display (15%)**
-- Display tunes in a scrollable table (Treeview widget)
-- Show columns: ID, Book, Title, Type, Key
-- Initially load all tunes from database
-
-**2. Filtering (10%)**
-- **Book filter:** Dropdown to select specific book (0, 1, 2, etc.) or "All Books"
-- **Type filter:** Dropdown to select tune type or "All Types"
-- Filters should work together (e.g., Book 0 + Type "reel")
-
-**3. Search (5%)**
-- Text entry for searching titles
-- Search should be case-insensitive
-- Search button to execute search
-
-**4. Details Panel (5%)**
-- When user clicks a tune in the table, show full details below
-- Display: Full title, Alt title (if any), Type, Key
-- "View Notation" button opens popup window with full ABC notation
-
-**5. Action Buttons (5%)**
-- **Refresh:** Reload data from database
-- **Clear:** Clear all filters and show all tunes
-- **Export:** Save current filtered results to CSV
-
----
-
-## Part 4: GitHub Repository (10%)
-
-### Task 4.1: Repository Structure
+## Part 4: Documentation & Github
 
 Your repository should have this structure:
 
@@ -208,125 +173,29 @@ abc-music-explorer/
 │   └── screenshots/
 ```
 
-### Task 4.2: README.md Requirements
-
-Your README must include:
-
-```markdown
-# ABC Music Database Explorer
-
-## Description
-Brief description of the project
-
-## Features
-- List key features
-
-## Installation
-
-
-## Usage
-How to use the application with screenshots
-
-## Technologies Used
-- Python
-- MySQL
-- Pandas
-- Tkinter
-
-```
-
-### Task 4.3: requirements.txt
-
-```
-pandas>=1.5.0
-mysql-connector-python>=8.0.0
-```
-
-### Task 4.4: Git Best Practices
-
-**Required:**
-- Minimum 10 meaningful commits throughout development
-- Clear commit messages (not "update" or "fix")
-- Use `.gitignore` to exclude:
-  - `__pycache__/`
-  - `*.pyc`
-  - `.env`
-  - Personal database credentials
-  - Data files (unless small)
-
-**Commit message examples:**
-```
-✓ "Add database schema and connection code"
-✓ "Implement ABC file parser"
-✓ "Create tune table with filtering"
-✗ "update"
-✗ "stuff"
-```
-
----
-
-## Part 5: Documentation & Demo (5%)
-
-### Task 5.1: Code Documentation
+Your README must be in [this format](https://github.com/skooter500/csresources/blob/main/assignmentreadme.md):
 
 - Use docstrings for all functions and classes
 - Include type hints where appropriate
 - Add comments for complex logic
 
-### Task 5.2: Screenshots
-
-Include in `docs/screenshots/`:
-- Main window showing tune list
-- Filters in action
-- Details panel with selected tune
-- Notation popup window
 
 ## Grading Rubric
 
 | Component | Points | Criteria |
 |-----------|--------|----------|
-| **Database (30%)** | | |
-| Schema design | 5 | Correct table structure with indexes |
-| File discovery | 5 | Correctly finds all ABC files and book numbers |
-| Parsing | 10 | Accurately parses tunes from ABC files |
-| Database insertion | 10 | Properly inserts all tunes with correct book numbers |
-| **Pandas (15%)** | | |
-| Loading data | 5 | Successfully loads from MySQL to DataFrame |
-| Analysis functions | 10 | Filter, search, and statistics functions work |
-| **GUI (40%)** | | |
-| Table display | 10 | Clean, readable Treeview with all columns |
-| Filtering | 10 | Book and type filters work correctly |
-| Search | 5 | Title search works (case insensitive) |
-| Details panel | 5 | Shows selected tune info |
-| Notation viewer | 5 | Popup displays full notation |
-| Polish | 5 | Professional appearance, error handling |
-| **GitHub (10%)** | | |
-| Repository structure | 3 | Well-organized with proper folders |
-| README | 3 | Complete, clear instructions |
-| Git usage | 4 | 10+ meaningful commits, good messages |
-| **Documentation (5%)** | | |
-| Code comments | 2 | Clear docstrings and comments |
-| Screenshots | 1 | Multiple screenshots showing features |
-| Demo | 2 | Successful live demonstration |
-| **TOTAL** | **100** | |
-
----
+| Loading & parsing | 30% | |
+| Data Analysys | 20% | |
+| Dashboard & querying | 30% | |
+| Github, documentation & presentation | 20% | |
 
 ## Submission Requirements
 
 1. **GitHub Repository URL** via the submission link
 
-### Required Technologies
-- **Python 3.8+**
-- **MySQL 8.0+**
-- **pandas**
-- **tkinter** (usually included with Python)
-- **mysql-connector-python** or **pymysql**
-
 ### Optional Enhancements (Bonus)
 - Parse the tunes and generate search keys
 - Add plot visualizations (matplotlib)
 - Implement edit/delete tune functionality
-- Add user authentication
 - Create playlist/favorites feature
-- Export to PDF
+- Export to PDF/MIDI
