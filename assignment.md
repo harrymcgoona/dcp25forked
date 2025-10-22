@@ -182,12 +182,20 @@ Your README must be in [this format](https://github.com/skooter500/csresources/b
 
 ## Grading Rubric
 
-| Component | Points | Criteria |
-|-----------|--------|----------|
-| Loading & parsing | 30% | |
-| Data Analysys | 20% | |
-| Dashboard & querying | 30% | |
-| Github, documentation & presentation | 20% | |
+| Component | Points |
+|-----------|--------|
+| Loading & parsing | 30% |
+| Data Analysys | 20% |
+| Dashboard & querying | 30% |
+| Github, documentation & presentation | 20% |
+
+Overall Grade Descriptors
+
+- 1 Exceeds requirements with exceptional implementation, self-directed learning evident, polished and professional
+- 2.1 Meets all requirements with high quality implementation and good attention to detail
+- 2.2 Meets all core requirements with competent implementation
+- Pass - Meets some of the requirements
+- Fail - Fails to meet minimum requirements or non-functional
 
 ## Submission Requirements
 

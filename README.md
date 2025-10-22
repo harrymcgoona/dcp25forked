@@ -48,6 +48,7 @@ Part 2
 
 Program DANI - Dynamic Artificial Non-Intelligence. An AI capable of many tasks, such as writing Poetry. Here are two examples of DANI's poems:
 
+```
 father let this in thee shall shine
 identify do mine only care i ensconce
 who calls thee releasing
@@ -77,6 +78,7 @@ liii
 5000 are restord and distribution of hearsay
 ill well esteemd
 stole that fair friend for through 1e7
+```
 
 DANI works, by loading a text and storing a list of each word from the document in an Dictionary. The key is the word itself and the value is a list, where each element is the word following. This is called the "model". 
 
@@ -115,7 +117,7 @@ Extra!
 
 Try and incorporate the frequency of word following into the model and poem generation
 
-Congrations you have created an N-Gram 1 language model :-) N-Gram 5 or 6 was State of the Art language model before LLMs
+Congrations you have created an N-Gram 1 language model :-) N-Gram 5 or 6 was State of the Art before LLMs
 
 For more about DANI see:
 
