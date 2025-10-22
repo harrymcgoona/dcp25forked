@@ -88,8 +88,10 @@ For example, for this input file:
 i love Star Trek
 love is love
 I love TU Dublin 
-DANI will generate the following model:
 ```
+
+DANI will generate the following model:
+
 
 ```
 i: love 
