@@ -84,18 +84,22 @@ DANI works, by loading a text and storing a list of each word from the document 
 
 For example, for this input file:
 
+```
 i love Star Trek
 love is love
 I love TU Dublin 
 DANI will generate the following model:
+```
 
-i: love( 
+``
+i: love 
 love: star is tu 
 star: trek
 trek:
 is: love
 tu: dublin
 dublin:
+```
 
 Each word is listed once in the model, regardless of how many times it occurs in the document. Each word is printed and all of the words that follow the word in the text. In the above example, the words star is and tu follow the word love with a count of 1 each. The word i is followed by the word love twice.
 
