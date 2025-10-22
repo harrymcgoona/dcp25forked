@@ -117,7 +117,7 @@ random_key = random.choice(list(my_dict.keys()))
 print(random_key)
 ```
 
-Train DANI on the sonnets.txt file and create the program to write the poem
+Train DANI on the shakespere sonnets and create the program to write the poem
 
 Extra!
 
