@@ -91,7 +91,7 @@ I love TU Dublin
 DANI will generate the following model:
 ```
 
-``
+```
 i: love 
 love: star is tu 
 star: trek
