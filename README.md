@@ -44,7 +44,7 @@ Programs we developed in class:
 - [Rainfall](week3/rainfall.py)
 - [Star Map](week3/star_map_soln.py)
 - [Pandas Example](week4/tunes_test.py)
-- [Lists, Dictionaries & Strings](week5/week5.py)
+- [Lists, Dictionaries & Strings - Story Generator](week5/week5.py)
 - [Parsing ABC Music Score Files](week5/lab_solution.py)
 - [Shakespere Sonnets Generator](week6/shakespere.py)
 
