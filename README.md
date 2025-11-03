@@ -41,11 +41,16 @@ Programs we developed in class:
 - [Py5 Sketch](week2/main.py)
 - [For loops](week2/week2.py)
 - [Guessing Game](week2/guessing_game.py)
+- [Rainfall](week3/rainfall.py)
 - [Star Map](week3/star_map_soln.py)
 - [Pandas Example](week4/tunes_test.py)
+- [Lists, Dictionaries & Strings](week5/week5.py)
 - [Parsing ABC Music Score Files](week5/lab_solution.py)
 - [Shakespere Sonnets Generator](week6/shakespere.py)
 
+Quick References:
+- [Python Quick Reference](week1/python_quick_ref.html)
+- [Git Quick Reference](http://github.com/skooter500/csresources/git_ref.pdf)
 
 ## Week 8 - OOP
 

@@ -13,8 +13,6 @@ for i in range(num_poems):
     poem = lines[start + 2: start + 16]
     poems[index] = poem    
 
-
-
 for index in poems.keys():    
     print(f"{index} {poems[index][0].strip()}")
 
