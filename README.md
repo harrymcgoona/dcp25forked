@@ -32,6 +32,27 @@ What you will need to install:
 - Pandas
 - Maybe more!
 
+Course Notes:
+- [Python Introduction](week1/python_complete_presentation.pdf)
+- [Python Fundamentals](week4/python_fundamentals.pdf)
+- [Pandas](pandas.pdf)
+
+Programs we developed in class:
+- [Py5 Sketch](week2/main.py)
+- [For loops](week2/week2.py)
+- [Guessing Game](week2/guessing_game.py)
+- [Star Map](week3/star_map_soln.py)
+- [Pandas Example](week4/tunes_test.py)
+- [Parsing ABC Music Score Files](week5/lab_solution.py)
+- [Shakespere Sonnets Generator](week6/shakespere.py)
+
+
+## Week 8 - OOP
+
+
+## Week 7
+- Review Week
+
 ## Week 6
 
 ### Lab
