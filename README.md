@@ -47,6 +47,7 @@ Programs we developed in class:
 - [Lists, Dictionaries & Strings - Story Generator](week5/week5.py)
 - [Parsing ABC Music Score Files](week5/lab_solution.py)
 - [Shakespere Sonnets Generator](week6/shakespere.py)
+- [Alternative Solution](lok.py)
 
 Quick References:
 - [Python Quick Reference](week1/python_quick_ref.html)
