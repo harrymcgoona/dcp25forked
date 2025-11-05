@@ -55,6 +55,146 @@ Quick References:
 
 ## Week 8 - OOP
 
+### Lab
+
+# Ace Ventura Pet Detective Text Analysis
+
+## Objective
+Analyze the Ace Ventura screenplay excerpt to extract insights using Python lists, strings, and dictionaries.
+
+## Dataset
+You have been provided with a screenplay excerpt from "Ace Ventura: Pet Detective" saved as `aceventura.txt`.
+
+---
+
+**Clean the data**
+
+Write a function `clean_word(word)` that:
+- Converts words to lowercase
+- Removes punctuation from the beginning and end of words
+- Returns the cleaned word
+- See previous lab
+
+```python
+def clean_word(word):
+    # Your code here
+    pass
+```
+
+Load the file into a list of strings (previous lab)
+
+**Count Word Frequencies**
+
+Create a dictionary called `word_counts` that stores each word and how many times it appears in the script. Use your `clean_word()` function.
+
+**Task 1.3: Find the Top 10 Most Common Words**
+
+Write code to find and print the 10 most frequently used words and their counts.
+
+To sort a dictionary by values:
+
+```python
+word_counts = {'hello': 5, 'world': 3, 'python': 8, 'data': 2}
+
+# Get top 3 words
+
+top_3 = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)[:3]
+```
+
+key=lambda x: x[1] tells Python to sort by the second element (index 1) of each tuple, which is the count.
+reverse=True sorts in descending order (highest first).
+
+---
+
+## Characters
+
+**Extract Character Names**
+
+Screenplay format puts character names in ALL CAPS before their dialogue. Write a function that identifies character names by:
+- Looking for lines that are in all uppercase
+- Filtering out common scene headings (EXT., INT., CONT'D, DAY, NIGHT, etc.)
+- Storing unique character names in a list
+
+```python
+def extract_characters(lines):
+    characters = []
+    # Your code here
+    return characters
+```
+
+**Task 2.2: Count Lines per Character**
+
+Create a dictionary where:
+- Keys are character names
+- Values are the number of times that character speaks
+
+**Task 2.3: Character Report**
+
+Print a formatted report showing:
+- Total number of unique characters
+- Each character and their number of speaking lines
+- The character with the most dialogue
+
+
+**Task 3.2: Dialogue Length Analysis**
+
+For each character, calculate:
+- Total number of words spoken
+- Average words per line of dialogue
+
+Store this in a dictionary structure of your choice.
+
+**Task 3.3: Word Usage by Character**
+
+Create a nested dictionary that shows which words each character uses most frequently:
+```python
+character_words = {
+    "UPS MAN": {"word1": count1, "word2": count2, ...},
+    "GRUFF MAN": {"word1": count1, ...}
+}
+```
+
+Bonus!
+
+**Stop Words**
+
+Common words like "the", "a", "is", "in" aren't very interesting. Create a list of stop words and modify your word frequency analysis to exclude them.
+
+**Action vs Dialogue**
+
+Screenplays have action descriptions (normal text) and dialogue (text after character names). Calculate what percentage of the script is dialogue versus action.
+
+**Challenge 3: Character Interaction Matrix**
+
+Create a dictionary that shows which characters appear in scenes together. This might look like:
+
+```python
+{
+    "UPS MAN": ["GRUFF MAN"],
+    "GRUFF MAN": ["UPS MAN"]
+}
+```
+
+## Sample Output Format
+
+```
+=== WORD FREQUENCY ANALYSIS ===
+Total unique words: XXX
+Top 10 most common words:
+1. the: XX occurrences
+2. man: XX occurrences
+...
+
+=== CHARACTER ANALYSIS ===
+Total characters: X
+UPS MAN: XX lines
+GRUFF MAN: XX lines
+...
+
+=== SCENE BREAKDOWN ===
+Total scenes: X
+EXT scenes: X
+INT scenes: X
 
 ## Week 7
 - Review Week
