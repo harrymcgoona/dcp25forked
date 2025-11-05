@@ -195,6 +195,7 @@ GRUFF MAN: XX lines
 Total scenes: X
 EXT scenes: X
 INT scenes: X
+```
 
 ## Week 7
 - Review Week
