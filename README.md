@@ -726,7 +726,7 @@ Which tune titles appear most frequently across all albums?
 
 ---
 
-## Part 3: Filtering and Counting (25 minutes)
+## Part 3: Filtering and Counting
 
 ### Task 3.1: Albums by Artist
 Filter the albums to show only:
@@ -754,7 +754,7 @@ How many such tracks are there?
 
 ---
 
-## Part 4: Grouping and Aggregating (25 minutes)
+## Part 4: Grouping and Aggregating
 
 ### Task 4.1: Tracks per Album
 Group the tracks by `album_id` and count how many tracks each album has.
@@ -777,7 +777,7 @@ Which albums tend to have more tunes per track?
 
 ---
 
-## Part 5: Sorting (15 minutes)
+## Part 5: Sorting
 
 ### Task 5.1: Sort Albums
 Sort the albums:
@@ -820,9 +820,7 @@ Now that you have both album info and track info together, answer:
 
 **Hint:** After merging, you can filter by artist name and count
 
----
-
-## Part 7: Advanced Exploration (25 minutes)
+## Part 7: Advanced Exploration
 
 ### Task 7.1: Most Prolific Artists
 Create a summary showing:
@@ -889,19 +887,9 @@ Compare two artists of your choice:
 
 ---
 
-## Tips for Success
-
-- **Refer to the class example** - most tasks are variations of what we did with the tune dataset
-- **Use print statements** - regularly print your dataframes to see what you're working with
-- **Take small steps** - test each piece of code before moving on
-- **Check your assumptions** - use `shape`, `head()`, and `info()` frequently
-- **Ask for help** - if you're stuck, check with classmates or the instructor
-
----
-
 ## Common Pandas Operations You'll Need
 
-Here's a quick reference (without giving away the answers!):
+Here's a quick reference:
 
 ```python
 # Loading
@@ -974,7 +962,6 @@ Save your Python file with:
 - Comments explaining what each section does
 - At least one interesting finding you discovered
 
-**Good luck and have fun exploring the data!** 🎵
 
 ## Week 3 - Pandas
 
