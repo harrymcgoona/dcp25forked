@@ -71,7 +71,7 @@ You have been provided with a screenplay excerpt from "Ace Ventura: Pet Detectiv
 
 Write a function `clean_word(word)` that:
 - Converts words to lowercase
-- Removes punctuation from the beginning and end of words
+- Removes punctuation
 - Returns the cleaned word
 - See previous lab
 
