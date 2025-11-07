@@ -21,7 +21,7 @@ with open('data/aceventura.txt', 'r') as f:
 word_counts = {}
 
 for line in lines:
-    words = line.split()
+    words = line.split(" ")
     for word in words:
         cleaned = clean_word(word)
         if cleaned:  # Skip empty strings
@@ -33,7 +33,7 @@ for line in lines:
 # Find top 10 most common words
 print("Top 10 Most Common Words:")
 print("-" * 30)
-top_10 = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)[:10]
+top_10 = sorted(word_counts.items(), key=lambda x: x[0], reverse=True)[:10]
 
 for word, count in top_10:
     print(f"{word}: {count}")
