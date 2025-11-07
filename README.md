@@ -54,6 +54,8 @@ Quick References:
 - [Git Quick Reference](http://github.com/skooter500/csresources/git_ref.pdf)
 
 ## Week 8 - OOP
+- [Slides](week8/oop-python.pdf)
+- [Lab Solution](week8/ace.py)
 
 ### Lab
 
