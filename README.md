@@ -53,8 +53,179 @@ Quick References:
 - [Python Quick Reference](week1/python_quick_ref.html)
 - [Git Quick Reference](http://github.com/skooter500/csresources/git_ref.pdf)
 
+## Week 9 - OOP
+
+### Lab
+# Lab Exercise: Object-Oriented Programming in Python
+
+## Learning Objectives
+
+By the end of this lab, you will be able to:
+- Create classes with attributes and methods
+- Implement encapsulation using private attributes
+- Use inheritance to create class hierarchies
+- Demonstrate polymorphism through method overriding
+- Build a complete object-oriented system
+
+---
+
+## Setup
+
+Create a new Python file called `music_game.py` for this lab exercise.
+
+---
+
+## Part 1: Creating Basic Classes
+
+### Task 1.1: Create a Musician Class
+
+Create a `Musician` class with the following specifications:
+
+- **Attributes:**
+  - `name` (string)
+  - `instrument` (string)
+  - `skill_level` (integer, 1-10)
+
+- **Methods:**
+  - `__init__(self, name, instrument, skill_level)` - constructor
+  - `play(self)` - returns a string: `"{name} plays the {instrument}"`
+  - `practice(self)` - increases skill_level by 1 (max 10)
+  - `get_info(self)` - returns a string with all musician details
+
+**Test your code:**
+```python
+musician1 = Musician("Aoife", "fiddle", 7)
+print(musician1.play())
+print(musician1.get_info())
+musician1.practice()
+print(musician1.get_info())
+```
+
+**Expected output:**
+```
+Aoife plays the fiddle
+Aoife plays fiddle at skill level 7
+Aoife plays fiddle at skill level 8
+```
+
+---
+
+## Part 2: Encapsulation
+
+### Task 2.1: Create a Session Class
+
+Irish traditional music sessions are gatherings where musicians play tunes together. Create a `Session` class with encapsulation:
+
+- **Private Attributes:**
+  - `__musicians` (list) - stores Musician objects
+  - `__location` (string)
+  - `__max_capacity` (integer)
+
+- **Methods:**
+  - `__init__(self, location, max_capacity)` - constructor
+  - `add_musician(self, musician)` - adds a musician if under capacity
+  - `remove_musician(self, name)` - removes a musician by name
+  - `get_musician_count(self)` - returns number of musicians
+  - `list_musicians(self)` - prints all musicians in the session
+  - `get_location(self)` - returns the location
+
+**Test your code:**
+```python
+session = Session("The Cobblestone", 5)
+session.add_musician(musician1)
+session.add_musician(Musician("Liam", "guitar", 6))
+session.list_musicians()
+print(f"Musicians in session: {session.get_musician_count()}")
+```
+
+---
+
+## Part 3: Inheritance
+
+### Task 3.1: Create Specialized Musician Classes
+
+Create two subclasses of `Musician`:
+
+**LeadMusician Class:**
+- Inherits from `Musician`
+- Additional attribute: `specialty` (string, e.g., "Irish reels")
+- Override `play()` method to return: `"{name} leads the session with {specialty} on {instrument}"`
+- Add new method `start_tune(self, tune_name)` that returns: `"{name} starts playing {tune_name}"`
+
+**BeginnersMusician Class:**
+- Inherits from `Musician`
+- Additional attribute: `learning` (boolean, starts as True)
+- Override `play()` method to return: `"{name} is learning to play the {instrument}"`
+- Add method `graduate(self)` that sets `learning` to False and increases skill_level by 2
+
+**Test your code:**
+```python
+lead = LeadMusician("Máire", "flute", 9, "slip jigs")
+beginner = BeginnersMusician("Tom", "bodhrán", 3)
+
+print(lead.play())
+print(lead.start_tune("The Butterfly"))
+print(beginner.play())
+beginner.graduate()
+print(f"{beginner.name} skill level: {beginner.skill_level}")
+```
+
+---
+
+## Part 4: Polymorphism
+
+### Task 4.1: Demonstrate Polymorphism
+
+Create a function called `hold_session()` that accepts a list of any type of Musician object and:
+1. Prints "--- Session Starting ---"
+2. Calls the `play()` method on each musician
+3. Prints "--- Session Ending ---"
+
+**Test your code:**
+```python
+musicians = [
+    Musician("Aoife", "fiddle", 7),
+    LeadMusician("Máire", "flute", 9, "slip jigs"),
+    BeginnersMusician("Tom", "bodhrán", 3)
+]
+
+hold_session(musicians)
+```
+
+**Expected output:**
+```
+--- Session Starting ---
+Aoife plays the fiddle
+Máire leads the session with slip jigs on flute
+Tom is learning to play the bodhrán
+--- Session Ending ---
+```
+
+Notice how the same method name `play()` produces different output depending on the object type!
+
+---
+
+
+Answer these questions in comments at the end of your file:
+
+1. What advantages does encapsulation provide in the Session class?
+2. How does inheritance help avoid code duplication between Musician classes?
+3. Give an example of polymorphism from this lab and explain why it's useful.
+4. What other real-world scenarios could you model using OOP?
+
+---
+
+## Tips
+
+- Test each part as you go - don't wait until the end!
+- Use descriptive variable names
+- Remember to call `super().__init__()` in subclass constructors
+- If you get stuck, refer back to the [lecture slides](week8-oop-python-1.pdf) & [example](week8/week8.py)
+
+
 ## Week 8 - OOP
-- [Slides](week8/oop-python.pdf)
+- [Slides](week8/oop-python-1.pdf)
+- [Longer set of slides](week8/oop-python.pdf)
 - [Lab Solution](week8/ace.py)
 
 ### Lab
