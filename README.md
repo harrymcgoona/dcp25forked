@@ -222,7 +222,6 @@ Answer these questions in comments at the end of your file:
 - Remember to call `super().__init__()` in subclass constructors
 - If you get stuck, refer back to the [lecture slides](week8-oop-python-1.pdf) & [example](week8/week8.py)
 
-
 ## Week 8 - OOP
 - [Slides](week8/oop-python-1.pdf)
 - [Longer set of slides](week8/oop-python.pdf)
